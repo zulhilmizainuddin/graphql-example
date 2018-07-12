@@ -1,0 +1,10 @@
+---
+version: '3'
+
+services:
+  pets:
+    build:
+      context: .
+    container_name: pets
+    ports:
+      - 80:3000
