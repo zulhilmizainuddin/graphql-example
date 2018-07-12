@@ -1,0 +1,8 @@
+type Pet {
+    id: Int,
+    ownerid: Int,
+    name: String,
+    colour: String,
+    age: Int,
+    breed: String
+}

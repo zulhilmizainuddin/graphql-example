@@ -1,0 +1,19 @@
+# import ownerSchema from './ownerSchema.graphql';
+# import petSchema from './petSchema.graphql';
+
+type Query {
+    owners: [Owner],
+    pets(email: String!): [Pet],
+    owner(email: String!): OwnerPets
+}
+
+type Mutation {
+    addOwner(name: String!, address: String!, phone: String!, email: String!): Boolean,
+    addPet(email: String!, name: String!, colour: String!, age: Int!, breed: String!): Boolean,
+    editPet(email: String!, id: Int!, name: String, colour: String, age: Int, breed: String): Boolean
+}
+
+schema {
+    query: Query,
+    mutation: Mutation
+}
