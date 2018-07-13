@@ -145,22 +145,22 @@ export class DatabaseQuery {
         return new Promise<boolean>((resolve, reject) => {
             this.db.serialize(() => {
 
-                const updateQuery: string = `UPDATE pet SET 
-                                            ${pet.name ? 'name=$name' : ''} 
-                                            ${pet.colour ? 'colour=$colour' : ''} 
-                                            ${pet.age ? 'age=$age' : ''} 
-                                            ${pet.breed ? 'breed=$breed' : ''} 
-                                            WHERE id=$id AND ownerid=$ownerid`;
+                const query: string = `UPDATE pet SET 
+                                       ${pet.name ? 'name=$name' : ''} 
+                                       ${pet.colour ? 'colour=$colour' : ''} 
+                                       ${pet.age ? 'age=$age' : ''} 
+                                       ${pet.breed ? 'breed=$breed' : ''} 
+                                       WHERE id=$id AND ownerid=$ownerid`;
 
-                const updateQueryValues: any = {};
-                if (pet.name) updateQueryValues.$name = pet.name;
-                if (pet.colour) updateQueryValues.$colour = pet.colour;
-                if (pet.age) updateQueryValues.$age = pet.age;
-                if (pet.breed) updateQueryValues.$breed = pet.breed;
-                updateQueryValues.$id = pet.id;
-                updateQueryValues.$ownerid = ownerid;
+                const values: any = {};
+                if (pet.name) values.$name = pet.name;
+                if (pet.colour) values.$colour = pet.colour;
+                if (pet.age) values.$age = pet.age;
+                if (pet.breed) values.$breed = pet.breed;
+                values.$id = pet.id;
+                values.$ownerid = ownerid;
 
-                this.db.run(updateQuery, updateQueryValues, (err) => {
+                this.db.run(query, values, (err) => {
                     if (err) {
                         console.log(err);
 
