@@ -1,5 +1,5 @@
 {
-  "name": "graphql-example",
+  "name": "graphql-pets",
   "version": "0.0.0",
   "private": true,
   "scripts": {
