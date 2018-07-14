@@ -1,11 +1,11 @@
 import {Owner} from "../models/Owner";
 import {Pet} from "../models/Pet";
-import {DatabaseQuery} from "../models/DatabaseQuery";
+import {SqliteQuery} from "../models/SqliteQuery";
 
 const collectiveResolver: any = {
     Query: {
         owners: async (root: any, args: any, context: any): Promise<Owner[]> => {
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const owners: Owner[] = await databaseQuery.listOwners();
 
             return owners;
@@ -13,7 +13,7 @@ const collectiveResolver: any = {
         pets: async (root: any, args: any, context: any): Promise<Pet[]> => {
             const email: string = args.email;
 
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const pets: Pet[] = await databaseQuery.listPetsByOwner(email);
 
             return pets;
@@ -21,7 +21,7 @@ const collectiveResolver: any = {
         owner: async (root: any, args: any, context: any): Promise<Owner | null> => {
             const email: string = args.email;
 
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const owner: Owner | null = await databaseQuery.getOwner(email);
             if (owner) {
                 const pets: Pet[] = await databaseQuery.listPetsByOwner(email);
@@ -45,7 +45,7 @@ const collectiveResolver: any = {
                 email: args.email
             };
 
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const result: boolean = await databaseQuery.addOwner(owner);
 
             return result;
@@ -53,7 +53,7 @@ const collectiveResolver: any = {
         addPet: async (root: any, args: any, context: any): Promise<boolean> => {
             const email: string = args.email;
 
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const owner: Owner | null = await databaseQuery.getOwner(email);
 
             let result: boolean = false;
@@ -74,7 +74,7 @@ const collectiveResolver: any = {
         editPet: async (root: any, args: any, context: any): Promise<boolean> => {
             const email: string = args.email;
 
-            const databaseQuery = new DatabaseQuery();
+            const databaseQuery = new SqliteQuery();
             const owner: Owner | null = await databaseQuery.getOwner(email);
 
             let result: boolean = false;
