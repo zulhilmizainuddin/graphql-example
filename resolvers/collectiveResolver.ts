@@ -1,3 +1,5 @@
+import {container} from '../inversify/inversify.config';
+
 import {Owner} from "../models/Owner";
 import {Pet} from "../models/Pet";
 import {OwnerHandler} from "../models/OwnerHandler";
@@ -7,8 +9,8 @@ import {SqliteQuery} from "../models/SqliteQuery";
 const collectiveResolver: any = {
     Query: {
         owners: async (root: any, args: any, context: any): Promise<Owner[]> => {
-            const ownerHandler = new OwnerHandler(new SqliteQuery());
 
+            const ownerHandler: OwnerHandler = container.get<OwnerHandler>('OwnerHandler');
             const owners: Owner[] = await ownerHandler.listOwners();
 
             return owners;
@@ -16,7 +18,7 @@ const collectiveResolver: any = {
         pets: async (root: any, args: any, context: any): Promise<Pet[]> => {
             const email: string = args.email;
 
-            const petHandler = new PetHandler(new SqliteQuery());
+            const petHandler: PetHandler = container.get<PetHandler>('PetHandler');
             const pets: Pet[] = await petHandler.listPetsByOwner(email);
 
             return pets;
@@ -24,7 +26,7 @@ const collectiveResolver: any = {
         owner: async (root: any, args: any, context: any): Promise<Owner | null> => {
             const email: string = args.email;
 
-            const ownerHandler = new OwnerHandler(new SqliteQuery());
+            const ownerHandler: OwnerHandler = container.get<OwnerHandler>('OwnerHandler');
             const owner: Owner | null = await ownerHandler.getOwner(email);
             
             return owner;
@@ -39,7 +41,7 @@ const collectiveResolver: any = {
                 email: args.email
             };
 
-            const ownerHandler = new OwnerHandler(new SqliteQuery());
+            const ownerHandler: OwnerHandler = container.get<OwnerHandler>('OwnerHandler');
             const result: boolean = await ownerHandler.addOwner(owner);
 
             return result;
@@ -54,7 +56,7 @@ const collectiveResolver: any = {
                 breed: args.breed
             };
 
-            const petHandler = new PetHandler(new SqliteQuery());
+            const petHandler: PetHandler = container.get<PetHandler>('PetHandler');
             const result: boolean = await petHandler.addPet(email, pet);
 
             return result;
@@ -70,7 +72,7 @@ const collectiveResolver: any = {
                 breed: args.breed
             };
 
-            const petHandler = new PetHandler(new SqliteQuery());
+            const petHandler: PetHandler = container.get<PetHandler>('PetHandler');
             const result: boolean = await petHandler.editPet(email, pet);
 
             return result;

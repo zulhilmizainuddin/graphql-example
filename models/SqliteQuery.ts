@@ -1,8 +1,11 @@
+import {injectable} from 'inversify';
+
 import {Database} from 'sqlite3';
 import {Owner} from './Owner';
 import {Pet} from './Pet';
 import {DatabaseQueryInterface} from '../interfaces/DatabaseQueryInterface';
 
+@injectable()
 export class SqliteQuery implements DatabaseQueryInterface {
 
     private db: Database;

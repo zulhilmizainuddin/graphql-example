@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+import 'reflect-metadata';
 import bodyParser from 'body-parser';
 import {importSchema} from 'graphql-import';
 import {makeExecutableSchema} from 'graphql-tools';

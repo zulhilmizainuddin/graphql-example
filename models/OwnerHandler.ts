@@ -1,9 +1,12 @@
+import {inject, injectable} from 'inversify';
+
 import {Pet} from "./Pet";
 import {Owner} from "./Owner";
 import {DatabaseQueryInterface} from "../interfaces/DatabaseQueryInterface";
 
+@injectable()
 export class OwnerHandler {
-    public constructor(private databaseQuery: DatabaseQueryInterface) {}
+    public constructor(@inject('SqliteQuery') private databaseQuery: DatabaseQueryInterface) {}
 
     public async addOwner(owner: Owner): Promise<boolean> {
         const result: boolean = await this.databaseQuery.addOwner(owner);
