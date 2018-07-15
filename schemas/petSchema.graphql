@@ -1,12 +1,26 @@
+enum Breed {
+    Baboon
+    Mandrill
+    Meerkat
+    Warthog
+}
+
+enum Colour {
+    Brown
+    Gray
+    Red
+    Yellow
+}
+
 input AddPet {
     "The name of the pet"
     name: String!
     "The colour of the pet"
-    colour: String!
+    colour: Colour!
     "The age of the pet"
     age: Int!
     "The breed of the pet"
-    breed: String!
+    breed: Breed!
 }
 
 input EditPet {
@@ -15,11 +29,11 @@ input EditPet {
     "The name of the pet"
     name: String
     "The colour of the pet"
-    colour: String
+    colour: Colour
     "The age of the pet"
     age: Int
     "The breed of the pet"
-    breed: String
+    breed: Breed
 }
 
 type Pet {
@@ -30,9 +44,9 @@ type Pet {
     "The name of the pet"
     name: String!
     "The colour of the pet"
-    colour: String!
+    colour: Colour!
     "The age of the pet"
     age: Int!
     "The breed of the pet"
-    breed: String!
+    breed: Breed!
 }
