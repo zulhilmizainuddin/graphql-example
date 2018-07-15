@@ -1,8 +1,17 @@
-type Pet {
+input AddPet {
+    "The name of the pet"
+    name: String!
+    "The colour of the pet"
+    colour: String!
+    "The age of the pet"
+    age: Int!
+    "The breed of the pet"
+    breed: String!
+}
+
+input EditPet {
     "The id of the pet"
-    id: Int
-    "The id of the owner that owns the pet"
-    ownerid: Int
+    id: Int!
     "The name of the pet"
     name: String
     "The colour of the pet"
@@ -11,4 +20,19 @@ type Pet {
     age: Int
     "The breed of the pet"
     breed: String
+}
+
+type Pet {
+    "The id of the pet"
+    id: Int!
+    "The id of the owner that owns the pet"
+    ownerid: Int!
+    "The name of the pet"
+    name: String!
+    "The colour of the pet"
+    colour: String!
+    "The age of the pet"
+    age: Int!
+    "The breed of the pet"
+    breed: String!
 }

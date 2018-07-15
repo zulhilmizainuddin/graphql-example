@@ -3,10 +3,10 @@
 
 type Query {
     "List of pet owners"
-    owners: [Owner]
+    owners: [Owner]!
 
     "List of pets by owner"
-    pets("The email address of the owner" email: String!): [Pet]
+    pets("The email address of the owner" email: String!): [Pet]!
 
     "Owner and pets details"
     owner("The email address of the owner" email: String!): OwnerPets
@@ -17,22 +17,15 @@ type Mutation {
     addOwner("The name of the owner" name: String!,
              "The address of the owner" address: String!,
              "The phone number of the owner" phone: String!,
-             "The email address of the owner" email: String!): Boolean
+             "The email address of the owner" email: String!): Boolean!
 
     "Add a pet"
     addPet("The email address of the owner" email: String!,
-           "The name of the pet" name: String!,
-           "The colour of the pet" colour: String!,
-           "The age of the pet" age: Int!,
-           "The breed of the pet" breed: String!): Boolean
+           "The pet to be added" pet: AddPet!): Boolean!
 
     "Edit a pet"
     editPet("The email address of the owner" email: String!,
-            "The id of the pet" id: Int!,
-            "The name of the pet" name: String,
-            "The colour of the pet" colour: String,
-            "The age of the pet" age: Int,
-            "The breed of the pet" breed: String): Boolean
+            "The pet to be edited" pet: EditPet!): Boolean!
 }
 
 schema {

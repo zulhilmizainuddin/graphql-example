@@ -2,28 +2,28 @@
 
 type Owner {
     "The id of the owner"
-    id: Int
+    id: Int!
     "The name of the owner"
-    name: String
+    name: String!
     "The address of the owner"
-    address: String
+    address: String!
     "The phone number of the owner"
-    phone: String
+    phone: String!
     "The email address of the owner"
-    email: String
+    email: String!
 }
 
 type OwnerPets {
     "The id of the owner"
-    id: Int
+    id: Int!
     "The name of the owner"
-    name: String
+    name: String!
     "The address of the owner"
-    address: String
+    address: String!
     "The phone number of the owner"
-    phone: String
+    phone: String!
     "The email address of the owner"
-    email: String
+    email: String!
     "The pets that belongs to the owner"
-    pets: [Pet]
+    pets: [Pet]!
 }

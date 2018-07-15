@@ -4,7 +4,6 @@ import {Owner} from "../models/Owner";
 import {Pet} from "../models/Pet";
 import {OwnerHandler} from "../models/OwnerHandler";
 import {PetHandler} from "../models/PetHandler";
-import {SqliteQuery} from "../models/SqliteQuery";
 
 const collectiveResolver: any = {
     Query: {
@@ -50,10 +49,10 @@ const collectiveResolver: any = {
             const email: string = args.email;
 
             const pet: Pet = {
-                name: args.name,
-                colour: args.colour,
-                age: args.age,
-                breed: args.breed
+                name: args.pet.name,
+                colour: args.pet.colour,
+                age: args.pet.age,
+                breed: args.pet.breed
             };
 
             const petHandler: PetHandler = container.get<PetHandler>('PetHandler');
@@ -65,11 +64,11 @@ const collectiveResolver: any = {
             const email: string = args.email;
 
             const pet: Pet = {
-                id: args.id,
-                name: args.name,
-                colour: args.colour,
-                age: args.age,
-                breed: args.breed
+                id: args.pet.id,
+                name: args.pet.name,
+                colour: args.pet.colour,
+                age: args.pet.age,
+                breed: args.pet.breed
             };
 
             const petHandler: PetHandler = container.get<PetHandler>('PetHandler');

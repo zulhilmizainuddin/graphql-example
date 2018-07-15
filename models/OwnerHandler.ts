@@ -26,9 +26,7 @@ export class OwnerHandler {
         if (owner) {
             const pets: Pet[] = await this.databaseQuery.listPetsByOwner(email);
 
-            if (pets && pets.length) {
-                owner.pets = pets;
-            }
+            owner.pets = pets && pets.length ? pets : [];
 
             return owner;
         }
