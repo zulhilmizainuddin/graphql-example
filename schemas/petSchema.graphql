@@ -1,8 +1,14 @@
 type Pet {
-    id: Int,
-    ownerid: Int,
-    name: String,
-    colour: String,
-    age: Int,
+    "The id of the pet"
+    id: Int
+    "The id of the owner that owns the pet"
+    ownerid: Int
+    "The name of the pet"
+    name: String
+    "The colour of the pet"
+    colour: String
+    "The age of the pet"
+    age: Int
+    "The breed of the pet"
     breed: String
 }

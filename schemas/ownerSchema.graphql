@@ -1,18 +1,29 @@
 # import petSchema from './petSchema.graphql';
 
 type Owner {
-    id: Int,
-    name: String,
-    address: String,
-    phone: String,
+    "The id of the owner"
+    id: Int
+    "The name of the owner"
+    name: String
+    "The address of the owner"
+    address: String
+    "The phone number of the owner"
+    phone: String
+    "The email address of the owner"
     email: String
 }
 
 type OwnerPets {
-    id: Int,
-    name: String,
-    address: String,
-    phone: String,
+    "The id of the owner"
+    id: Int
+    "The name of the owner"
+    name: String
+    "The address of the owner"
+    address: String
+    "The phone number of the owner"
+    phone: String
+    "The email address of the owner"
     email: String
+    "The pets that belongs to the owner"
     pets: [Pet]
 }
