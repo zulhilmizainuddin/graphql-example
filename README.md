@@ -40,7 +40,7 @@ query listOwners {
 
 ```graphql
 mutation addPet {
-  addPet(email: "jane@email.com", name: "Rafiki", colour: "Gray", age: 20, breed: "Baboon")
+  addPet(email: "jane@email.com", pet: {name: "Rafiki", colour: "Gray", age: 20, breed: "Baboon"})
 }
 ```
 
@@ -48,7 +48,7 @@ mutation addPet {
 
 ```graphql
 mutation editPet {
-  editPet(email: "jane@email.com", id: 4, breed: "Mandrill")
+  editPet(email: "jane@email.com", pet: {id: 4, breed: "Mandrill"})
 }
 ```
 
